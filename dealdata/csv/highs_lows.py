@@ -12,13 +12,14 @@ with open(filename) as f:
     # print(header_row)
 
     # 获取最高气温
-    dates, highs =[], []
+    dates, highs, lows = [], [], []
     info_dict = {}
     for rows in reader:
         if rows[1] != "":
             current_date = datetime.strptime(rows[0], "%Y-%m-%d")
             dates.append(current_date)
             highs.append(int(rows[1]))
+            lows.append(int(rows[3]))
             info_dict['pst'] = rows[0]
             info_dict['maxTemperatureF'] = (int(rows[1]))
             info_dict['minTemperatureF'] = ((rows[3]))
@@ -29,9 +30,10 @@ with open(filename) as f:
     # 根据数据绘制图形
     fig = plt.figure(dpi=128, figsize=(10, 6))
     plt.plot(dates, highs, c='red')
+    plt.plot(dates, lows, c='blue')
 
     # 设置图形的格式
-    plt.title("Daliy high temperatures, July 2014", fontsize=24)
+    plt.title("Daliy high and low temperatures - 2014", fontsize=24)
     plt.xlabel("", fontsize=16)
     fig.autofmt_xdate()
     plt.ylabel("Temperature (F)", fontsize=16)
