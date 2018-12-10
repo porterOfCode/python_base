@@ -40,7 +40,7 @@ my_config.title_font_size = 24
 my_config.lable_font_size = 14
 my_config.major_label_font_size = 18
 my_config.truncate_label = 15   # 将较长的项目名显示为15个字符，
-my_config.show_y_guides = False #隐藏表中的水平线
+my_config.show_y_guides = False # 隐藏表中的水平线
 my_config.width = 1000
 
 chart = pygal.Bar(my_config, style=my_style)
